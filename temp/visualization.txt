@@ -1,0 +1,29 @@
+import csv
+import pandas as pd
+import plotly.express as px
+
+t = []
+
+global row_name
+global currentFrame
+currentFrame = pd.DataFrame()
+row_name = '0'
+
+
+class Stuff:
+    @staticmethod
+    def draw_graph():
+        df = pd.read_csv("../categories.csv")
+        print(f"Was möchtest du analysieren?")
+        print("Hier sind deine Kategorien. Wähle, indem Du eine Zahl eingibst.")
+        rows = 0
+        for row in open("../categories.csv"):
+            rows += 1
+            print(f"[{rows}] - {row}")
+        cat_number = int(input())
+        df = pd.read_csv("../categories.csv").get(cat_number)
+        fig = px.line(df, title="Testing")
+        fig.show()
+
+class Work:
+    Stuff.draw_graph()
